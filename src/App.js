@@ -8,6 +8,7 @@ import Post from "./page/post";
 import Navbar from "./page/navbar";
 import New from "./page/new";
 import Share from "./page/share";
+import Space from "./page/space";
 import User from "./page/user";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/register" component={Register} />
                         <Route path="/post" component={Post} />
                         <Route path="/share/:id" component={Share} />
+                        <Route path="/space" component={Space} />
                         <Route path="/user/:id" component={User} />
                         <Route path="/" component={New} />
                     </Switch>

@@ -10,6 +10,7 @@ import New from "./page/new";
 import Share from "./page/share";
 import Space from "./page/space";
 import User from "./page/user";
+import Hot from "./page/hot";
 
 function App() {
     const style = {
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/share/:id" component={Share} />
                         <Route path="/space" component={Space} />
                         <Route path="/user/:id" component={User} />
+                        <Route path="/hot" component={Hot} />
                         <Route path="/" component={New} />
                     </Switch>
                     <Footer />

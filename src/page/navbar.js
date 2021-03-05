@@ -48,6 +48,7 @@ export default function Navbar() {
             return(
                 <ButtonGroup style={style.group}>
                     <Button variant="link" onClick={() => history.push("/")}>首页</Button>
+                    <Button variant="link" onClick={() => history.push("/hot")}>排行榜</Button>
                     <Button variant="link" onClick={() => history.push("/login")}>登录</Button>
                     <Button variant="link" onClick={() => history.push("/register")}>注册</Button>
                 </ButtonGroup>
@@ -56,6 +57,7 @@ export default function Navbar() {
             return(
                 <ButtonGroup style={style.group}>
                     <Button variant="link" onClick={() => history.push("/")}>首页</Button>
+                    <Button variant="link" onClick={() => history.push("/hot")}>排行榜</Button>
                     <Button variant="link" onClick={() => history.push("/post")}>发表</Button>
                     <Button variant="link" onClick={() => history.push("/space")}>动态</Button>
                     <Avatar

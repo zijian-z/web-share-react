@@ -13,9 +13,10 @@ export default function ProfileUpdate(props) {
     }
     async function updateProfile() {
         try {
-            const response = await instance.post('/profile/' + props.username, {
+            const response = await instance.post('/profile/', {
                 bio: bio,
-                email: email
+                email: email,
+                sex: 0
             });
             window.location.href = "/user/" + props.username;
         } catch (error) {

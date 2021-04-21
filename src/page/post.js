@@ -17,7 +17,7 @@ export default function Post() {
         try {
             const response = await instance.post("links/", {
                 title: title,
-                uri: link,
+                url: link,
                 firstComment: comment
             });
             history.push("/detail/" + response.data.id);

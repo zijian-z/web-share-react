@@ -37,22 +37,13 @@ export default function User() {
     return(
         <div>
             {
-                update ? <ProfileUpdate username={id} bio={bio} email={email}/>
-                    :
+                self ?
                     <div>
-                        <div>
-                            <Tag size="md" variant="subtle" colorScheme="cyan">
-                                <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
-                                {
-                                    checkStringNotNull(bio) ?
-                                        <TagLabel>{bio}</TagLabel>
-                                        :
-                                        <TagLabel>这个人还没有自我介绍</TagLabel>
-                                }
-                            </Tag>
-                        </div>
-                        {
-                            self ?
+                    {
+                        update ?
+                            <ProfileUpdate username={id} bio={bio} email={email}/>
+                            :
+                            <div>
                                 <div>
                                     <Tag style={style.email} size="md" variant="subtle" colorScheme="cyan">
                                         <TagLeftIcon boxSize="12px" as={EmailIcon} />
@@ -64,13 +55,34 @@ export default function User() {
                                         }
                                     </Tag>
                                 </div>
-                                :
-                                <div />
-                        }
-                        {
-                            self ? <Button variant="link" colorScheme="pink" onClick={() => setUpdate(true)}>修改</Button>
-                                : <div/>
-                        }
+                                <div>
+                                    <Tag size="md" variant="subtle" colorScheme="cyan">
+                                        <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
+                                        {
+                                            checkStringNotNull(bio) ?
+                                                <TagLabel>{bio}</TagLabel>
+                                                :
+                                                <TagLabel>未填</TagLabel>
+                                        }
+                                    </Tag>
+                                </div>
+                                <div>
+                                    <Button variant="link" colorScheme="pink" onClick={() => setUpdate(true)}>修改</Button>
+                                </div>
+                            </div>
+                    }
+                    </div>
+                    :
+                    <div>
+                        <Tag size="md" variant="subtle" colorScheme="cyan">
+                            <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
+                            {
+                                checkStringNotNull(bio) ?
+                                    <TagLabel>{bio}</TagLabel>
+                                    :
+                                    <TagLabel>这个人还没有自我介绍</TagLabel>
+                            }
+                        </Tag>
                     </div>
             }
         </div>

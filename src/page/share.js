@@ -43,7 +43,7 @@ export default function Share() {
                 const response = await instance.get('/links/' + id);
                 setTitle(response.data.title);
                 setCommentList(response.data.comments);
-                setHasLike(response.data.userLiked);
+                setHasLike(response.data.liked);
             } catch (error) {
                 console.error(error);
             }
@@ -103,7 +103,7 @@ export default function Share() {
                                 <Text style={listStyle} fontSize="md" key={item.id}>
                                     {item.content}
                                     &nbsp;by&nbsp;
-                                    <Link color="teal.500" as={RL} to={'/user/' + item.createUser.username}>{item.createUser.username}</Link>
+                                    <Link color="teal.500" as={RL} to={'/user/' + item.username}>{item.username}</Link>
                                 </Text>
                             )
                         }

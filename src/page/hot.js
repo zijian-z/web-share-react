@@ -20,7 +20,7 @@ export default function Hot() {
 
     return (
         <div>
-            {linkArray.map((item) => <LinkBox key={item.id} link={item.uri} name={item.title} id={item.id}/>)}
+            {linkArray.map((item) => <LinkBox key={item.id} link={item.url} name={item.title} id={item.id}/>)}
         </div>
     );
 }

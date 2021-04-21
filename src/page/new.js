@@ -9,7 +9,7 @@ export default function New() {
         async function getLinks() {
             try {
                 const response = await instance.get('/links/');
-                const linkArray = response.data.content;
+                const linkArray = response.data;
                 setLinkArray(linkArray);
             } catch (error) {
                 console.error(error);
@@ -20,7 +20,7 @@ export default function New() {
 
     return (
         <div>
-            {linkArray.map((item) => <LinkBox key={item.id} link={item.uri} name={item.title} id={item.id}/>)}
+            {linkArray.map((item) => <LinkBox key={item.id} link={item.url} name={item.title} id={item.id}/>)}
         </div>
     );
 }

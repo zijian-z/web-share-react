@@ -9,11 +9,11 @@ export default function LinkBox(props) {
             marginBottom: '20px'
         },
         link: {
-            fontSize: "20px"
+            fontSize: "18px"
         },
         button: {
-            marginLeft: '20px',
-            marginRight: '20px',
+            marginLeft: '15px',
+            marginRight: '15px',
             cursor: 'pointer',
             fontSize: '13px'
         },

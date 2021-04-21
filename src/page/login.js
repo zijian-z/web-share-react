@@ -30,7 +30,7 @@ export default function Login() {
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 variant="flushed"
-                placeholder="用户名" />
+                placeholder="用户名或邮箱" />
             <Input
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}

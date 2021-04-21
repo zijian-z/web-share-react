@@ -1,6 +1,6 @@
 {
-  "name": "web-share-react",
-  "version": "0.1.0",
+  "name": "news-react",
+  "version": "0.2",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.3",

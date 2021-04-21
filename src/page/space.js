@@ -14,7 +14,7 @@ export default function Space() {
         async function getUnread() {
             try {
                 const response = await instance.post('/notify/');
-                setNotifies(response.data.content);
+                setNotifies(response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -35,27 +35,19 @@ export default function Space() {
                 notifies.map((item) =>
                     <Text key={item.id} style={style}>
                         <Link
-                            to={'/user/' + item.comment.createUser.username}
-                            color={item.unread ? "teal.500" : "gray.500"}
+                            to={'/user/' + item.username}
+                            color={item.unread === 1 ? "teal.500" : "gray.500"}
                             as={RL}
                             onClick={() => readNotify(item.id)}>
-                            {item.comment.createUser.username}
+                            {item.username}
                         </Link>
-                        在
+                        &nbsp;&nbsp;
                         <Link
-                            to={'/share/' + item.link.id}
-                            color={item.unread ? "teal.500" : "gray.500"}
+                            to={'/share/' + item.linkId}
+                            color={item.unread ? "red.500" : "gray.500"}
                             as={RL}
                             onClick={() => readNotify(item.id)}>
-                            {item.link.title}
-                        </Link>
-                        中{item.notifyType === 'COMMENT_YOU' ? '评论' : '@'}了你：
-                        <Link
-                            to={'/share/' + item.link.id}
-                            color={item.unread ? "teal.500" : "gray.500"}
-                            as={RL}
-                            onClick={() => readNotify(item.id)}>
-                            {item.comment.content}
+                            {item.notifyType === 'COMMENT' ? '评论' : '@'}了你
                         </Link>
                     </Text>
                 )

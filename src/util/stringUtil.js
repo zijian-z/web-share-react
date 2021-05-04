@@ -5,7 +5,7 @@ export function checkStringNotNull(s) {
     return s !== null && s !== undefined && s !== '';
 }
 
-export function least15String(username) {
+export function username2IdenticonString(username) {
     const shaObj = new jsSHA("SHA-224", "TEXT", { encoding: "UTF8" });
     shaObj.update(username);
     const hash = shaObj.getHash("HEX");

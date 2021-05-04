@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ButtonGroup, Button, Avatar} from "@chakra-ui/react";
 import instance from "../config/axiosConfig";
 import {useHistory} from "react-router-dom";
-import {least15String} from "../util/stringUtil";
+import {username2IdenticonString} from "../util/stringUtil";
 
 export default function Navbar() {
     const [username, setUsername] = useState("");
@@ -24,7 +24,7 @@ export default function Navbar() {
             try {
                 const response = await instance.get('/users/status');
                 setUsername(response.data);
-                setImageData(least15String(response.data))
+                setImageData(username2IdenticonString(response.data))
             } catch (error) {
                 console.log(error);
             }

@@ -34,56 +34,76 @@ export default function User() {
         getProfile();
     }, [])
 
+    async function logout() {
+        try {
+            const response = await instance.post('/users/logout');
+            if (response.data === 'logout.success') {
+                window.location.href = "/";
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function SelfPage() {
+        return (
+            <div>
+                <Button variant="link" onClick={() => logout()}>退出登录</Button>
+                {
+                    update ?
+                        <ProfileUpdate username={id} bio={bio} email={email}/>
+                        :
+                        <div>
+                            <div>
+                                <Tag style={style.email} size="md" variant="subtle" colorScheme="cyan">
+                                    <TagLeftIcon boxSize="12px" as={EmailIcon} />
+                                    {
+                                        checkStringNotNull(email) ?
+                                            <TagLabel>{email}</TagLabel>
+                                            :
+                                            <TagLabel>未填</TagLabel>
+                                    }
+                                </Tag>
+                            </div>
+                            <div>
+                                <Tag size="md" variant="subtle" colorScheme="cyan">
+                                    <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
+                                    {
+                                        checkStringNotNull(bio) ?
+                                            <TagLabel>{bio}</TagLabel>
+                                            :
+                                            <TagLabel>未填</TagLabel>
+                                    }
+                                </Tag>
+                            </div>
+                            <div>
+                                <Button variant="link" colorScheme="pink" onClick={() => setUpdate(true)}>修改</Button>
+                            </div>
+                        </div>
+                }
+            </div>
+        )
+    }
+
+    function OtherPage() {
+        return (
+            <div>
+                <Tag size="md" variant="subtle" colorScheme="cyan">
+                    <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
+                    {
+                        checkStringNotNull(bio) ?
+                            <TagLabel>{bio}</TagLabel>
+                            :
+                            <TagLabel>这个人还没有自我介绍</TagLabel>
+                    }
+                </Tag>
+            </div>
+        )
+    }
     return(
         <div>
             {
-                self ?
-                    <div>
-                    {
-                        update ?
-                            <ProfileUpdate username={id} bio={bio} email={email}/>
-                            :
-                            <div>
-                                <div>
-                                    <Tag style={style.email} size="md" variant="subtle" colorScheme="cyan">
-                                        <TagLeftIcon boxSize="12px" as={EmailIcon} />
-                                        {
-                                            checkStringNotNull(email) ?
-                                                <TagLabel>{email}</TagLabel>
-                                                :
-                                                <TagLabel>未填</TagLabel>
-                                        }
-                                    </Tag>
-                                </div>
-                                <div>
-                                    <Tag size="md" variant="subtle" colorScheme="cyan">
-                                        <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
-                                        {
-                                            checkStringNotNull(bio) ?
-                                                <TagLabel>{bio}</TagLabel>
-                                                :
-                                                <TagLabel>未填</TagLabel>
-                                        }
-                                    </Tag>
-                                </div>
-                                <div>
-                                    <Button variant="link" colorScheme="pink" onClick={() => setUpdate(true)}>修改</Button>
-                                </div>
-                            </div>
-                    }
-                    </div>
-                    :
-                    <div>
-                        <Tag size="md" variant="subtle" colorScheme="cyan">
-                            <TagLeftIcon boxSize="12px" as={CheckCircleIcon} />
-                            {
-                                checkStringNotNull(bio) ?
-                                    <TagLabel>{bio}</TagLabel>
-                                    :
-                                    <TagLabel>这个人还没有自我介绍</TagLabel>
-                            }
-                        </Tag>
-                    </div>
+                self ? <SelfPage/> : <OtherPage />
             }
         </div>
     )

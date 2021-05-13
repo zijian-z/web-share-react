@@ -32,17 +32,6 @@ export default function Navbar() {
         status();
     }, [])
 
-    async function logout() {
-        try {
-            const response = await instance.post('/users/logout');
-            if (response.data === 'logout.success') {
-                window.location.href = "/";
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     function Welcome() {
         if (username === "") {
             return(
@@ -58,6 +47,7 @@ export default function Navbar() {
                 <ButtonGroup style={style.group}>
                     <Button variant="link" onClick={() => history.push("/")}>首页</Button>
                     <Button variant="link" onClick={() => history.push("/hot")}>排行榜</Button>
+                    <Button variant="link" onClick={() => history.push("/read")}>阅读</Button>
                     <Button variant="link" onClick={() => history.push("/post")}>发表</Button>
                     <Button variant="link" onClick={() => history.push("/space")}>动态</Button>
                     <Avatar
@@ -66,7 +56,6 @@ export default function Navbar() {
                         src={'data:image/png;base64,' + imageData}
                         size="xs"
                         onClick={() => window.location.href = "/user/" + username}/>
-                    <Button variant="link" onClick={() => logout()}>退出</Button>
                 </ButtonGroup>
             )
         }

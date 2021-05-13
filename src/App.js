@@ -11,6 +11,8 @@ import Share from "./page/share";
 import Space from "./page/space";
 import User from "./page/user";
 import Hot from "./page/hot";
+import Read from "./page/read";
+import Content from "./page/content";
 
 function App() {
     const style = {
@@ -30,6 +32,8 @@ function App() {
                         <Route path="/space" component={Space} />
                         <Route path="/user/:id" component={User} />
                         <Route path="/hot" component={Hot} />
+                        <Route path="/read" component={Read} />
+                        <Route path="/content/:id" component={Content} />
                         <Route path="/" component={New} />
                     </Switch>
                     <Footer />
